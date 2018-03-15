@@ -1,0 +1,40 @@
+@(bookForm: Form[Employee])
+
+@layouts.layout("Edit Employee") {
+    @helper.form(action = routes.EmployeeController.update) {
+
+
+        <div class="container">
+            <h2>Edit Employee</h2>
+            <form>
+                <div class="form-group">
+                @helper.inputText(bookForm("id"),'class -> "form-control",'placeholder -> "Edit id" )
+
+                </div>
+
+                <div class="form-group">
+                @helper.inputText(bookForm("name"),'class -> "form-control",'placeholder -> "Edit name" )
+
+                </div>
+                <div class="form-group">
+                @helper.inputText(bookForm("email"),'class -> "form-control",'placeholder -> "Edit email" )
+
+                </div>
+                <div class="form-group">
+                @helper.inputText(bookForm("contactNumber"),'class -> "form-control",'placeholder -> "Edit contactNumber" )
+
+                </div>
+                <div class="form-group">
+                @helper.inputText(bookForm("dob"),'class -> "form-control",'placeholder -> "Edit DateOfBirth" )
+
+                </div>
+
+                <div class="form-group">
+                @helper.inputText(bookForm("department"),'class -> "form-control",'placeholder -> "Edit department" )
+
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+    }
+}

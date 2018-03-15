@@ -1,0 +1,35 @@
+@(bookForm: Form[Employee])
+
+@layouts.layout("Add Employee") {
+    @helper.form(action = routes.EmployeeController.save) {
+
+        <div class="container">
+            <h2>Add New Employee</h2>
+            <form>
+                <div class="form-group">
+                    @helper.inputText(bookForm("name"),'class -> "form-control",'placeholder -> "Enter name" )
+
+                </div>
+                <div class="form-group">
+                    @helper.inputText(bookForm("email"),'class -> "form-control",'placeholder -> "Enter email" )
+
+                </div>
+                <div class="form-group">
+                    @helper.inputText(bookForm("contactNumber"),'class -> "form-control",'placeholder -> "Enter contactNumber" )
+
+                </div>
+                <div class="form-group">
+                    @helper.inputDate(bookForm("dob"),'class -> "form-control",'placeholder -> "Enter DateOfBirth" )
+
+                </div>
+
+                <div class="form-group">
+                    @helper.inputText(bookForm("department"),'class -> "form-control",'placeholder -> "Enter department" )
+
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    }
+}

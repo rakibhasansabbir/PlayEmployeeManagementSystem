@@ -1,0 +1,59 @@
+@(employees: List[Employee])
+
+    @layouts.layout("All Employee") {
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <div class="jumbotron text-center">
+            <a class="btn btn-success" href="@routes.EmployeeController.create()">Add Employee</a>
+
+        </div>
+
+        <div class="table-responsive container">
+            <h2 class="text-info">Employee Info</h2>
+            <input name="search" class="form-control" id="myInput" type="text" placeholder="Search..">
+            <br>
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Department</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>ContactNumber</th>
+                        <th>Date of birth</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                @for(employee <- employees) {
+                    <tr>
+                        <td>@employee.id</td>
+                        <td>@employee.department</td>
+                        <td>@employee.name</td>
+                        <td>@employee.email</td>
+                        <td>@employee.contactNumber</td>
+                        <td>@employee.dob</td>
+                        <td style="width: 170px" class="text-center">
+                            <div class="btn-group btn-group-sm">
+                                <a href="@routes.EmployeeController.edit(employee.id)" class="btn btn-success">Edit</a>
+                                <a href="@routes.EmployeeController.delete(employee.id)" class="btn btn-danger">Delete</a>
+                                <a href="@routes.EmployeeController.show(employee.id)" class="btn btn-info">View</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+                </tbody>
+            </table>
+        </div>
+
+        <script>
+                $(document).ready(function () {
+                    $("#myInput").on("keyup", function () {
+                        var value = $(this).val().toLowerCase();
+                        $("#myTable tr").filter(function () {
+                            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                        });
+                    });
+                });
+        </script>
+    }

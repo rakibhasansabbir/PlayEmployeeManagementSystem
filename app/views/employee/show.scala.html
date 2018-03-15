@@ -1,0 +1,14 @@
+@(employee: Employee)
+
+@layouts.layout(employee.name) {
+    <h2>@employee.name</h2>
+    <h4>Email: @employee.email</h4>
+    <h5>ContactNumber: @employee.contactNumber</h5>
+    <small>Department: @employee.department</small>
+    <h6>Date Of Birth: @employee.dob</h6>
+    <div class="btn-group btn-group-sm">
+        <a class="btn btn-success" href="@routes.EmployeeController.edit(employee.id)">Edit</a>
+        <a href="@routes.EmployeeController.delete(employee.id)" class="btn btn-danger">Delete</a>
+        <a href="@routes.EmployeeController.index()" class="btn btn-info">Back</a>
+    </div>
+}

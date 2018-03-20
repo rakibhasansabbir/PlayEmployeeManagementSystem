@@ -20,7 +20,9 @@ public class EmployeeController extends Controller {
         if (employees == null) {
             return notFound("Employee Not Found");
         }
-        return ok(index.render(employees));
+        Form<Employee> bookForm = formFactory.form(Employee.class);
+
+        return ok(index.render(employees,bookForm));
     }
 
     public Result create() {

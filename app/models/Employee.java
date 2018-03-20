@@ -24,4 +24,6 @@ public class Employee extends Model{
     public String department;
 
     public static Finder<Integer, Employee> finder = new Finder<>(Employee.class);
+
+
 }
